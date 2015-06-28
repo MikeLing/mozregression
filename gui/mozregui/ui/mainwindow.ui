@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>768</height>
+    <width>561</width>
+    <height>429</height>
    </rect>
   </property>
   <property name="contextMenuPolicy">
@@ -88,8 +88,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1024</width>
-     <height>27</height>
+     <width>561</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -151,11 +151,64 @@
    <widget class="QWidget" name="LogWidget">
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="LogView" name="log_view">
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="2">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>35</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>--Level--</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>ERROR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>WARNING</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INFO</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>DEBUG</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Filter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="LogView" name="log_view">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
