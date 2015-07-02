@@ -1,6 +1,6 @@
 from PyQt4.QtCore import QObject, pyqtSlot as Slot, pyqtSignal as Signal
 from PyQt4.QtGui import QPlainTextEdit, QTextCursor, QColor, \
-    QTextCharFormat
+    QTextCharFormat, QTextDocument
 from datetime import datetime
 
 COLORS = {
@@ -16,13 +16,15 @@ class LogView(QPlainTextEdit):
     def __init__(self, parent=None):
         QPlainTextEdit.__init__(self, parent)
         self.setMaximumBlockCount(1000)
+        self.messageDocument = QTextDocument(QPlainTextEdit)
+        self.setDocument(messageDocument)
 
     @Slot(dict)
     def on_log_received(self, data):
         time_info = datetime.fromtimestamp((data['time']/1000)).isoformat()
         log_message = '%s: %s : %s' % (
             time_info, data['level'], data['message'])
-        message_document = self.document()
+        message_document = self.messageDocument
         cursor_to_add = QTextCursor(message_document)
         cursor_to_add.movePosition(cursor_to_add.End)
         cursor_to_add.insertText(log_message + '\n')
